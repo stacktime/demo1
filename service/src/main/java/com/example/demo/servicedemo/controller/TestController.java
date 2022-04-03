@@ -23,13 +23,14 @@ public class TestController {
     private TestService testService;
 
     @GetMapping("/testDo")
-    public Object testDo(@RequestParam String name) {
+    public Object testDo(@RequestParam String name, @RequestParam String name2) {
         if (StringUtils.isEmpty(name)) {
             throw new RuntimeException("姓名不能为空");
         }
+        System.out.println(name2);
         String s = testService.doService(name);
         log.info("请求参数:{},响应参数:{}", name, s);
-        return s;
+        return s + name2;
     }
 
     @GetMapping("/testDo2")
