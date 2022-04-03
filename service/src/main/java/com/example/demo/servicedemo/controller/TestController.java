@@ -26,7 +26,6 @@ public class TestController {
         if (StringUtils.isEmpty(name)) {
             throw new RuntimeException("姓名不能为空");
         }
-        System.out.println(name2);
         String s = testService.doService(name);
         log.info("请求参数:{},响应参数:{}", name, s);
         return s + name2;
