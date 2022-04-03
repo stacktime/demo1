@@ -1,6 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo.servicedemo.controller;
 
-import com.example.demo.service.TestService;
+import com.example.demo.servicedemo.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

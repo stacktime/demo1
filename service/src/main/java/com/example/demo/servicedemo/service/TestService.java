@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.servicedemo.service;
 
 /**
  * @author WangYuanbo
