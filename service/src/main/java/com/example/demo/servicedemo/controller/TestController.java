@@ -1,6 +1,7 @@
 package com.example.demo.servicedemo.controller;
 
 import com.example.demo.servicedemo.service.TestService;
+import com.example.demo.servicedemo.service.impl.TestServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,17 @@ public class TestController {
             throw new RuntimeException("姓名不能为空");
         }
         String s = testService.testDo(name);
+        log.info("请求参数:{},响应参数:{}", name, s);
+        return s;
+    }
+
+    @GetMapping("/testDo2")
+    public Object testDo2(@RequestParam String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new RuntimeException("姓名不能为空");
+        }
+        TestServiceImpl testService2 = new TestServiceImpl();
+        String s = testService2.testDo(name);
         log.info("请求参数:{},响应参数:{}", name, s);
         return s;
     }
