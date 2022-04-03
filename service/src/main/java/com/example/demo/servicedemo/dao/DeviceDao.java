@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface DeviceDao extends JpaRepository<DeviceDO, Integer> {
+
+    DeviceDO findByIdAndDeleted(Integer id, Byte deleted);
 }
