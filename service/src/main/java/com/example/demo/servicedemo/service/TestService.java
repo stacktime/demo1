@@ -9,5 +9,5 @@ public interface TestService {
     /**
      * 测试方法
      */
-    String testDo(String str);
+    String doService(String str);
 }

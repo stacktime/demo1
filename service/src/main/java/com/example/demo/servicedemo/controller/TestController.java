@@ -27,7 +27,7 @@ public class TestController {
         if (StringUtils.isEmpty(name)) {
             throw new RuntimeException("姓名不能为空");
         }
-        String s = testService.testDo(name);
+        String s = testService.doService(name);
         log.info("请求参数:{},响应参数:{}", name, s);
         return s;
     }
@@ -38,7 +38,7 @@ public class TestController {
             throw new RuntimeException("姓名不能为空");
         }
         TestServiceImpl testService2 = new TestServiceImpl();
-        String s = testService2.testDo(name);
+        String s = testService2.doService(name);
         log.info("请求参数:{},响应参数:{}", name, s);
         return s;
     }
