@@ -2,7 +2,7 @@ package com.example.demo.servicedemo.service.impl;
 
 import com.example.demo.servicedemo.dao.DeviceDao;
 import com.example.demo.servicedemo.module.entity.DeviceDO;
-import com.example.demo.servicedemo.service.TestService;
+import com.example.demo.servicedemo.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
  * @date 2022/4/3 14:03
  */
 @Service
-public class TestServiceImpl implements TestService {
+public class DeviceServiceImpl implements DeviceService {
 
 
     @Autowired
@@ -23,12 +23,12 @@ public class TestServiceImpl implements TestService {
      * 测试方法
      */
     @Override
-    public String doService(String str) {
+    public DeviceDO findDeviceById(Integer id) {
         Optional<DeviceDO> optional = deviceDao.findById(1);
         if (!optional.isPresent()) {
-            throw new RuntimeException(str + "执行了,但是失败了");
+            throw new RuntimeException(id + "执行了,但是失败了");
         }
         DeviceDO deviceDO = optional.get();
-        return str + "执行了" + deviceDO.getName();
+        return deviceDO;
     }
 }

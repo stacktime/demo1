@@ -1,8 +1,8 @@
 package com.example.demo.servicedemo.controller;
 
-import com.example.demo.servicedemo.service.TestService;
+import com.example.demo.servicedemo.module.entity.DeviceDO;
+import com.example.demo.servicedemo.service.DeviceService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/test")
-public class TestController {
+public class DeviceController {
 
     @Autowired
-    private TestService testService;
+    private DeviceService deviceService;
 
-    @GetMapping("/testDo")
-    public Object testDo(@RequestParam String name, @RequestParam String name2) {
-        if (StringUtils.isEmpty(name)) {
-            throw new RuntimeException("姓名不能为空");
+    @GetMapping("/findDeviceById")
+    public Object findDeviceById(@RequestParam Integer id) {
+        if (null == id) {
+            throw new RuntimeException("id不能为空");
         }
-        String s = testService.doService(name);
-        log.info("请求参数:{},响应参数:{}", name, s);
-        return s + name2;
+        DeviceDO device = deviceService.findDeviceById(id);
+        return device;
     }
 }
