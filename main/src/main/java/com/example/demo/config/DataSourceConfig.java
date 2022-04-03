@@ -15,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 /**
  * @author WangYuanbo
@@ -34,7 +35,7 @@ public class DataSourceConfig {
 
     @Bean
     public PlatformTransactionManager testDemoTransactionManager(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(testDemoEntityManagerFactory(builder).getObject());
+        return new JpaTransactionManager(Objects.requireNonNull(testDemoEntityManagerFactory(builder).getObject()));
     }
 
     @Primary
