@@ -2,6 +2,7 @@ package com.example.demo.servicedemo.service.impl;
 
 import com.example.demo.servicedemo.common.Constant;
 import com.example.demo.servicedemo.dao.DeviceDao;
+import com.example.demo.servicedemo.module.dto.RequestDTO;
 import com.example.demo.servicedemo.module.entity.DeviceDO;
 import com.example.demo.servicedemo.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,24 @@ public class DeviceServiceImpl implements DeviceService {
         }
         // 没报错就返回true 说明更改成功
         return true;
+    }
+
+    /**
+     * 保存设备
+     */
+    @Override
+    public Integer saveDevice(RequestDTO requestDTO) {
+        DeviceDO deviceDO;
+        Integer deviceId = requestDTO.getId();
+        if (null == deviceId) {
+            deviceDO = new DeviceDO();
+        } else {
+            deviceDO = deviceDao.findByIdAndDeleted(deviceId, Constant.NO_BYTE);
+        }
+        deviceDO.setCode(requestDTO.getCode());
+        deviceDO.setName(requestDTO.getName());
+        deviceDO.setStatus(requestDTO.getStatus());
+        DeviceDO save = deviceDao.save(deviceDO);
+        return save.getId();
     }
 }

@@ -1,13 +1,11 @@
 package com.example.demo.servicedemo.controller;
 
+import com.example.demo.servicedemo.module.dto.RequestDTO;
 import com.example.demo.servicedemo.module.entity.DeviceDO;
 import com.example.demo.servicedemo.service.DeviceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author WangYuanbo
@@ -38,10 +36,20 @@ public class DeviceController {
         boolean modifyStatus = deviceService.modifyStatus(id, status);
         return modifyStatus;
     }
+
     @GetMapping("/insertStatus")
-    public Object insertStatus(@RequestParam String code , String name) {
-        deviceService.insertStatus(code , name);
+    public Object insertStatus(@RequestParam String code, String name) {
+        deviceService.insertStatus(code, name);
         return 0;
+    }
+
+    @PostMapping("/saveDevice")
+    public Object saveDevice(@RequestBody RequestDTO request) {
+        if (null == request) {
+            throw new RuntimeException("请求参数不能为空");
+        }
+        Integer deviceId = deviceService.saveDevice(request);
+        return deviceId;
     }
 
 }

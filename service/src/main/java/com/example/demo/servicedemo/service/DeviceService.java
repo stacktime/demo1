@@ -1,5 +1,6 @@
 package com.example.demo.servicedemo.service;
 
+import com.example.demo.servicedemo.module.dto.RequestDTO;
 import com.example.demo.servicedemo.module.entity.DeviceDO;
 
 /**
@@ -14,5 +15,11 @@ public interface DeviceService {
     DeviceDO findDeviceById(Integer id);
 
     boolean modifyStatus(Integer id, Integer status);
-    void insertStatus(String code , String name);
+
+    void insertStatus(String code, String name);
+
+    /**
+     * 保存设备
+     */
+    Integer saveDevice(RequestDTO requestDTO);
 }
