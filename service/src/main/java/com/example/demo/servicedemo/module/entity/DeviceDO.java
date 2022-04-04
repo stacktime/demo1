@@ -40,12 +40,12 @@ public class DeviceDO {
      * 状态 (默认)0禁用 1启用 2失效 -1 断开链接
      */
     @Column(name = "status")
-    private Byte status;
+    private Integer status;
     /**
      * 删除标记 0 未删除
      */
     @Column(name = "deleted")
-    private Byte deleted;
+    private Integer deleted;
 
     /**
      * 创建时间

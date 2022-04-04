@@ -25,5 +25,5 @@ public class RequestDTO {
     /**
      * 状态 (默认)0禁用 1启用 2失效 -1 断开链接
      */
-    private Byte status;
+    private Integer status;
 }
