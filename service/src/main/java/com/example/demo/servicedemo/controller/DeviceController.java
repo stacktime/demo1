@@ -29,4 +29,13 @@ public class DeviceController {
         DeviceDO device = deviceService.findDeviceById(id);
         return device;
     }
+
+    @GetMapping("/modifyStatus")
+    public Object modifyStatus(@RequestParam Integer id, @RequestParam Integer status) {
+        if (null == id || null == status) {
+            throw new RuntimeException("id不能为空");
+        }
+        boolean modifyStatus = deviceService.modifyStatus(id, status);
+        return modifyStatus;
+    }
 }

@@ -29,4 +29,16 @@ public class DeviceServiceImpl implements DeviceService {
         }
         return aDo;
     }
+
+    @Override
+    public boolean modifyStatus(Integer id, Integer status) {
+        try {
+            deviceDao.updateStatusById(id, status);
+        } catch (Exception e) {
+            // 报错就返回false 说明更改失败
+            return false;
+        }
+        // 没报错就返回true 说明更改成功
+        return true;
+    }
 }

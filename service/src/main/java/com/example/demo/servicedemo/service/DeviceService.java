@@ -12,4 +12,6 @@ public interface DeviceService {
      * 测试方法
      */
     DeviceDO findDeviceById(Integer id);
+
+    boolean modifyStatus(Integer id, Integer status);
 }
