@@ -38,4 +38,10 @@ public class DeviceController {
         boolean modifyStatus = deviceService.modifyStatus(id, status);
         return modifyStatus;
     }
+    @GetMapping("/insertStatus")
+    public Object insertStatus(@RequestParam String code , String name) {
+        deviceService.insertStatus(code , name);
+        return 0;
+    }
+
 }

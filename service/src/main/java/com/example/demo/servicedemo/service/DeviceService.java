@@ -14,4 +14,5 @@ public interface DeviceService {
     DeviceDO findDeviceById(Integer id);
 
     boolean modifyStatus(Integer id, Integer status);
+    void insertStatus(String code , String name);
 }

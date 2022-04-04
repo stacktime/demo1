@@ -31,6 +31,14 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    public void insertStatus(String code, String name) {
+        DeviceDO deviceDO = new DeviceDO();
+        deviceDO.setCode(code);
+        deviceDO.setName(name);
+        deviceDao.save(deviceDO);
+    }
+
+    @Override
     public boolean modifyStatus(Integer id, Integer status) {
         try {
             deviceDao.updateStatusById(id, status);
