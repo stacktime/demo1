@@ -24,7 +24,7 @@ public class DeviceServiceImpl implements DeviceService {
      */
     @Override
     public DeviceDO findDeviceById(Integer id) {
-        DeviceDO aDo = deviceDao.findByIdAndDeleted(id, Constant.NO_BYTE);
+        DeviceDO aDo = deviceDao.findByIdAndDeleted(id, Constant.NO);
         if (null == aDo) {
             throw new RuntimeException(id + "执行了,但是失败了");
         }
@@ -61,7 +61,7 @@ public class DeviceServiceImpl implements DeviceService {
         if (null == deviceId) {
             deviceDO = new DeviceDO();
         } else {
-            deviceDO = deviceDao.findByIdAndDeleted(deviceId, Constant.NO_BYTE);
+            deviceDO = deviceDao.findByIdAndDeleted(deviceId, Constant.NO);
         }
         deviceDO.setCode(requestDTO.getCode());
         deviceDO.setName(requestDTO.getName());

@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 @Repository
 public interface DeviceDao extends JpaRepository<DeviceDO, Integer> {
 
-    DeviceDO findByIdAndDeleted(Integer id, Byte deleted);
+    DeviceDO findByIdAndDeleted(Integer id, Integer deleted);
 
     @Modifying
     @Transactional
