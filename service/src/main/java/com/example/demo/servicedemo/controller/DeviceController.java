@@ -1,6 +1,7 @@
 package com.example.demo.servicedemo.controller;
 
 import com.example.demo.servicedemo.module.dto.RequestDTO;
+import com.example.demo.servicedemo.module.dto.ResDto;
 import com.example.demo.servicedemo.module.entity.DeviceDO;
 import com.example.demo.servicedemo.service.DeviceService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,35 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/test")
 public class DeviceController {
+    @Autowired
+    private DeviceService deviceService;
 
+    @GetMapping("/insertStatus")
+    public void insertStatus(@RequestParam ResDto resDto) {
+        deviceService.insertStatus(resDto);
+    }
+
+    @GetMapping("/findDeviceByid")
+    public DeviceDO findDeviceById(@RequestParam ResDto resDto) {
+        if (null == resDto.getId()) {
+            throw new RuntimeException("id不能为空");
+        }
+        DeviceDO device = deviceService.findDeviceById(resDto);
+        return device;
+    }
+
+    @GetMapping("/updateData")
+    public void updateData(@RequestParam ResDto resDto) {
+        deviceService.updateData(resDto);
+    }
+
+    @GetMapping("/deleteData")
+    public void deleteData(@RequestParam ResDto resDto) {
+        deviceService.deleteData(resDto);
+    }
+
+
+/**
     @Autowired
     private DeviceService deviceService;
 
@@ -51,5 +80,6 @@ public class DeviceController {
         Integer deviceId = deviceService.saveDevice(request);
         return deviceId;
     }
+*/
 
 }

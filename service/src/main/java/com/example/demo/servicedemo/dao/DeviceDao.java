@@ -19,9 +19,9 @@ public interface DeviceDao extends JpaRepository<DeviceDO, Integer> {
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true, value = "update tbl_device_info set status = ?2 where id = ?1 and deleted = 0")
-    void updateStatusById(Integer id, Integer status);
-
+    @Query(nativeQuery = true, value = "update tbl_device_info set status = ? where id = ? and deleted = ?")
+    void updateStatusById(Integer status , Integer id, Integer deleted);
+    void deleteById(Integer id);
 
 
 }

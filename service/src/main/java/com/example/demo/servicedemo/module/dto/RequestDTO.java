@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * @author WangYuanbo
  * @date 2022/4/3 16:27
+ * 把所有参数放入
  */
 @Data
 public class RequestDTO {
