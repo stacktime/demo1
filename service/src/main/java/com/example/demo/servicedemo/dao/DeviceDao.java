@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
@@ -16,6 +17,8 @@ import javax.transaction.Transactional;
 public interface DeviceDao extends JpaRepository<DeviceDO, Integer> {
 
     DeviceDO findByIdAndDeleted(Integer id, Integer deleted);
+    DeviceDO findByName(String name);
+
 
     @Modifying
     @Transactional

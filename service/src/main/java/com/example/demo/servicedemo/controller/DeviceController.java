@@ -19,13 +19,13 @@ public class DeviceController {
     @Autowired
     private DeviceService deviceService;
 
-    @GetMapping("/insertStatus")
-    public void insertStatus(@RequestParam ResDto resDto) {
+    @PostMapping("/insertStatus")
+    public void insertStatus(@RequestBody ResDto resDto) {
         deviceService.insertStatus(resDto);
     }
 
     @GetMapping("/findDeviceByid")
-    public DeviceDO findDeviceById(@RequestParam ResDto resDto) {
+    public DeviceDO findDeviceById(@RequestBody ResDto resDto) {
         if (null == resDto.getId()) {
             throw new RuntimeException("id不能为空");
         }
@@ -33,13 +33,13 @@ public class DeviceController {
         return device;
     }
 
-    @GetMapping("/updateData")
-    public void updateData(@RequestParam ResDto resDto) {
+    @PostMapping("/updateData")
+    public void updateData(@RequestBody ResDto resDto) {
         deviceService.updateData(resDto);
     }
 
-    @GetMapping("/deleteData")
-    public void deleteData(@RequestParam ResDto resDto) {
+    @PostMapping("/deleteData")
+    public void deleteData(@RequestBody ResDto resDto) {
         deviceService.deleteData(resDto);
     }
 

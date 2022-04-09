@@ -22,7 +22,11 @@ public class ResDto {
     /**
      * 设备状态
      */
-    private Integer Status;
+    private Integer status;
+    /**
+     * 启用禁用
+     */
+    private Integer online;
     /**
      * 是否删除
      */
