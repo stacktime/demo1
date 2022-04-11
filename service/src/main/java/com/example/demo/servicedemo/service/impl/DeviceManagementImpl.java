@@ -65,6 +65,7 @@ public class DeviceManagementImpl implements DeviceManagement {
         String productName = resDto.getName();
         productDO = productDao.findByName(productName);
         if(productDO == null){
+            // 没有new
             productDO.setId(resDto.getId());
             productDO.setName(resDto.getName());
             productDO.setStatus(resDto.getStatus());
