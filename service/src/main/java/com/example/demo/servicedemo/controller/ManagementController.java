@@ -27,16 +27,29 @@ public class ManagementController {
         deviceManagement.createProduct(resDto);
     }
 
+    /**
+     * 更改(更新)状态用 PUT
+     *
+     * @param resDto
+     */
     @PostMapping("/upAndDown")
-    public void upAndDown(@RequestBody ResDto resDto) {
+    public void upAndDown(@RequestBody ResDto resDto) {// 参数不需要用body 一般一个接口就(负责)更新单个状态,前端之需要一个参数就行
         deviceManagement.upAndDown(resDto);
     }
 
+    // TODO 同上
     @PostMapping("/enableAndDisable")
-    public void enableAndDisable(@RequestBody ResDto resDto){
+    public void enableAndDisable(@RequestBody ResDto resDto) {
         deviceManagement.enableAndDisable(resDto);
     }
 
+    /**
+     * 删除用 DELETE
+     *
+     * @param resDto
+     */
     @PostMapping("/deletedProduct")
-    public void deletedProduct(@RequestBody ResDto resDto) {deviceManagement.deletedProduct(resDto);}
+    public void deletedProduct(@RequestBody ResDto resDto) {
+        deviceManagement.deletedProduct(resDto);
+    } //  传入主键就行(唯一)
 }
