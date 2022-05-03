@@ -12,23 +12,23 @@ import javax.transaction.Transactional;
 
 
 @Repository
-public interface ProductDao extends JpaRepository<ProductDO , Integer>  {
+public interface ProductDao extends JpaRepository<ProductDO, Integer> {
     ProductDO findByName(String name);
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true , value = "update  iot_equipment_status set online = ?1 where name = ?2 and deleted = ?3")
-    void updateStatusById(Integer online , String name , Integer deleted);
+    @Query(nativeQuery = true, value = "update  iot_equipment_status set online = ?1 where name = ?2 and deleted = ?3")
+    void updateStatusById(Integer online, String name, Integer deleted);
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true , value = "update  iot_equipment_status set deleted = ?1 where name = ?2")
-    void deletedProduct(Integer deleted , String name);
+    @Query(nativeQuery = true, value = "update  iot_equipment_status set deleted = ?1 where name = ?2")
+    void deletedProduct(Integer deleted, String name);
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true , value = "update  iot_equipment_status set status = ?1 where name = ?2")
-    void enableAndDisable(Integer status , String name);
+    @Query(nativeQuery = true, value = "update  iot_equipment_status set status = ?1 where name = ?2")
+    void enableAndDisable(Integer status, String name);
 
 }
 

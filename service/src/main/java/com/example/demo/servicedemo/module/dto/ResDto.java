@@ -44,7 +44,7 @@ public class ResDto {
      */
     //private Date gmtModify;
     /**
-     *修改人
+     * 修改人
      */
     private String modifyUser;
 

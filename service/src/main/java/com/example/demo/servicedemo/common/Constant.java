@@ -14,5 +14,5 @@ public class Constant {
 
     public static final Byte NO_BYTE = 0;
 
-    public  static final Date Time = new Date();
+    public static final Date Time = new Date();
 }

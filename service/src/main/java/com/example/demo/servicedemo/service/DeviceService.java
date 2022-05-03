@@ -15,13 +15,13 @@ public interface DeviceService {
     /**
      DeviceDO findDeviceById(Integer id);
 
-    boolean modifyStatus(Integer id, Integer status);
+     boolean modifyStatus(Integer id, Integer status);
 
-    void insertStatus(String code, String name);
+     void insertStatus(String code, String name);
 
 
-    Integer saveDevice(RequestDTO requestDTO);
-    */
+     Integer saveDevice(RequestDTO requestDTO);
+     */
     /**
      * 插入
      */

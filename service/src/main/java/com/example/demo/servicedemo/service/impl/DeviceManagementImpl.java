@@ -16,6 +16,7 @@ public class DeviceManagementImpl implements DeviceManagement {
 
     /**
      * 创建设备
+     *
      * @param resDto
      * @return
      */
@@ -49,7 +50,7 @@ public class DeviceManagementImpl implements DeviceManagement {
          * 一般返回id给前端,不能直接返回个数字.没有任何意义,
          * 如果错误没报错,或者程序自己吞了报错用户不知道他有没有创建成功
          */
-        return 1;
+        return resDto.getId();
     }
 
     /**
@@ -64,17 +65,18 @@ public class DeviceManagementImpl implements DeviceManagement {
         ProductDO productDO;
         String productName = resDto.getName();
         productDO = productDao.findByName(productName);
-        if(productDO == null){
+        if (productDO == null) {
             // 没有new
+            productDO = new ProductDO();
             productDO.setId(resDto.getId());
             productDO.setName(resDto.getName());
             productDO.setStatus(resDto.getStatus());
             productDao.saveAndFlush(productDO);
-        }else {
-            throw new RuntimeException(productName+"已存在");
+        } else {
+            throw new RuntimeException(productName + "已存在");
         }
         // 返回同上
-        return null;
+        return resDto.getId();
     }
 
     /**
@@ -85,9 +87,9 @@ public class DeviceManagementImpl implements DeviceManagement {
         // id同上
         String productName = resDto.getName();
         ProductDO pDo = productDao.findByName(productName);
-        if(pDo == null){
+        if (pDo == null) {
             // TODO 变量已经是null  你还放进去打印,肯定报空指针
-            throw new RuntimeException(pDo+"该设备已经被删除");
+            throw new RuntimeException(productName + "该设备已经被删除");
         } else {
             Integer productOnline = resDto.getOnline();
             /*
@@ -99,7 +101,7 @@ public class DeviceManagementImpl implements DeviceManagement {
             productDao.updateStatusById(productOnline, productName, productDeleted);
         }
         // 返回同上
-        return null;
+        return resDto.getId();
     }
 
     /**
@@ -110,14 +112,14 @@ public class DeviceManagementImpl implements DeviceManagement {
         // id同上
         String productName = resDto.getName();
         ProductDO pDo = productDao.findByName(productName);
-        if(pDo == null) {
-            throw new RuntimeException(productName+"设备不存在");
-        }else {
+        if (pDo == null) {
+            throw new RuntimeException(productName + "设备不存在");
+        } else {
             Integer productStatus = resDto.getStatus();
-            productDao.enableAndDisable(productStatus , productName);
+            productDao.enableAndDisable(productStatus, productName);
         }
         // 返回同上
-        return null;
+        return resDto.getId();
     }
 
     /**
@@ -128,13 +130,13 @@ public class DeviceManagementImpl implements DeviceManagement {
         // id同上
         String productName = resDto.getName();
         ProductDO pDo = productDao.findByName(productName);
-        if(pDo == null) {
-            throw new RuntimeException(productName+"已经不存在");
-        }else {
+        if (pDo == null) {
+            throw new RuntimeException(productName + "已经不存在");
+        } else {
             Integer productDeleted = resDto.getDeleted();
-            productDao.deletedProduct(productDeleted , productName);
+            productDao.deletedProduct(productDeleted, productName);
         }
         // 返回同上
-        return null;
+        return resDto.getId();
     }
 }

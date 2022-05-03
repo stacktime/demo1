@@ -4,10 +4,7 @@ import com.example.demo.servicedemo.module.dto.ResDto;
 import com.example.demo.servicedemo.service.DeviceManagement;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -32,7 +29,7 @@ public class ManagementController {
      *
      * @param resDto
      */
-    @PostMapping("/upAndDown")
+    @PutMapping("/upAndDown")
     public void upAndDown(@RequestBody ResDto resDto) {// 参数不需要用body 一般一个接口就(负责)更新单个状态,前端之需要一个参数就行
         deviceManagement.upAndDown(resDto);
     }
@@ -48,7 +45,7 @@ public class ManagementController {
      *
      * @param resDto
      */
-    @PostMapping("/deletedProduct")
+    @DeleteMapping("/deletedProduct")
     public void deletedProduct(@RequestBody ResDto resDto) {
         deviceManagement.deletedProduct(resDto);
     } //  传入主键就行(唯一)
