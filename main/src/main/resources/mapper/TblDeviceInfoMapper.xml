@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TblDeviceInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.domain.TblDeviceInfo">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="gmtModify" column="gmt_modify" jdbcType="TIMESTAMP"/>
+        <result property="modifyUser" column="modify_user" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,code,name,
+        status,deleted,gmt_create,
+        create_user,gmt_modify,modify_user
+    </sql>
+    <insert id="insertUser">
+        insert into tbl_device_info values
+        (null,#{code},#{name},#{status},#{deleted},#{gmtCreate},#{createUser},#{gmtModify},#{modifyUser})
+    </insert>
+    <update id="deleteById">
+        update tbl_device_info set deleted = 1 where id = #{id}
+    </update>
+    <update id="updateById">
+        update tbl_device_info set status = #{status} where id = #{id}
+    </update>
+    <select id="selectAllUser" resultType="com.example.demo.domain.TblDeviceInfo"></select>
+    <select id="findById" resultType="com.example.demo.entity.DeviceDO"></select>
+
+
+</mapper>
