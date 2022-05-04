@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.servicedemo.mapper.IotEquipmentStatusMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.servicedemo.module.entity.IotEquipmentStatusDO">
+        <!--@mbg.generated-->
+        <!--@Table iot_equipment_status-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="online" jdbcType="INTEGER" property="online"/>
+        <result column="deleted" jdbcType="INTEGER" property="deleted"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, `status`, `online`, deleted
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from iot_equipment_status
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.example.demo.servicedemo.module.entity.IotEquipmentStatusDO" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into iot_equipment_status (`name`, `status`, `online`,
+        deleted)
+        values (#{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{online,jdbcType=INTEGER},
+        #{deleted,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.example.demo.servicedemo.module.entity.IotEquipmentStatusDO" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into iot_equipment_status
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="online != null">
+                `online`,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="online != null">
+                #{online,jdbcType=INTEGER},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.example.demo.servicedemo.module.entity.IotEquipmentStatusDO">
+        <!--@mbg.generated-->
+        update iot_equipment_status
+        <set>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="online != null">
+                `online` = #{online,jdbcType=INTEGER},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.servicedemo.module.entity.IotEquipmentStatusDO">
+        <!--@mbg.generated-->
+        update iot_equipment_status
+        set `name` = #{name,jdbcType=VARCHAR},
+        `status` = #{status,jdbcType=INTEGER},
+        `online` = #{online,jdbcType=INTEGER},
+        deleted = #{deleted,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
