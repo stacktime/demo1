@@ -12,9 +12,9 @@ import com.baomidou.mybatisplus.extension.kotlin.KtUpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.common.Const;
 import com.example.demo.domain.TblDeviceInfo;
-import com.example.demo.entity.DeviceDO;
-import com.example.demo.service.TblDeviceInfoService;
+import com.example.demo.entity.DeviceDO2;
 import com.example.demo.mapper.TblDeviceInfoMapper;
+import com.example.demo.service.TblDeviceInfoService;
 import com.example.demo.servicedemo.common.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,21 +46,21 @@ public class TblDeviceInfoServiceImpl extends ServiceImpl<TblDeviceInfoMapper, T
      */
     @Override
     public Integer insertStatus(TblDeviceInfo tblDeviceInfo) {
-        DeviceDO deviceDO;
+        DeviceDO2 deviceDO2;
         Integer deviceId = tblDeviceInfo.getId();
-        deviceDO = tblDeviceInfoMapper.findById(deviceId);
-        if (deviceDO == null) {
-            deviceDO = new DeviceDO();
-            deviceDO.setId(tblDeviceInfo.getId());
-            deviceDO.setCode(tblDeviceInfo.getCode());
-            deviceDO.setName(tblDeviceInfo.getName());
-            deviceDO.setStatus(tblDeviceInfo.getStatus());
-            deviceDO.setDeleted(tblDeviceInfo.getDeleted());
-            deviceDO.setGmtCreate(Constant.Time);
-            deviceDO.setCreateUser(tblDeviceInfo.getCreateUser());
-            deviceDO.setGmtModify(Constant.Time);
-            deviceDO.setModifyUser(tblDeviceInfo.getModifyUser());
-            tblDeviceInfoMapper.insertUser(deviceDO);
+        deviceDO2 = tblDeviceInfoMapper.findById(deviceId);
+        if (deviceDO2 == null) {
+            deviceDO2 = new DeviceDO2();
+            deviceDO2.setId(tblDeviceInfo.getId());
+            deviceDO2.setCode(tblDeviceInfo.getCode());
+            deviceDO2.setName(tblDeviceInfo.getName());
+            deviceDO2.setStatus(tblDeviceInfo.getStatus());
+            deviceDO2.setDeleted(tblDeviceInfo.getDeleted());
+            deviceDO2.setGmtCreate(Constant.Time);
+            deviceDO2.setCreateUser(tblDeviceInfo.getCreateUser());
+            deviceDO2.setGmtModify(Constant.Time);
+            deviceDO2.setModifyUser(tblDeviceInfo.getModifyUser());
+            tblDeviceInfoMapper.insertUser(deviceDO2);
 
             return tblDeviceInfo.getId();
         } else {
@@ -71,10 +71,10 @@ public class TblDeviceInfoServiceImpl extends ServiceImpl<TblDeviceInfoMapper, T
 
     @Override
     public String deleted(TblDeviceInfo tblDeviceInfo) {
-        DeviceDO deviceDO;
+        DeviceDO2 deviceDO2;
         Integer deviceId = tblDeviceInfo.getId();
-        deviceDO = tblDeviceInfoMapper.findById(deviceId);//这句是否必要？
-        if (deviceDO == null || Const.DELETED.equals(tblDeviceInfo.getDeleted())) {
+        deviceDO2 = tblDeviceInfoMapper.findById(deviceId);//这句是否必要？
+        if (deviceDO2 == null || Const.DELETED.equals(tblDeviceInfo.getDeleted())) {
 
             return ("该设备不存在或已被删除");
         } else {

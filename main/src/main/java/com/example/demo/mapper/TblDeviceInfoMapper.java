@@ -2,7 +2,7 @@ package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.domain.TblDeviceInfo;
-import com.example.demo.entity.DeviceDO;
+import com.example.demo.entity.DeviceDO2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +16,13 @@ import java.util.List;
 @Service
 public interface TblDeviceInfoMapper extends BaseMapper<TblDeviceInfo> {
 
-    Integer insertUser(DeviceDO deviceDO);
+    Integer insertUser(DeviceDO2 deviceDO2);
 
     Integer deleteById(Integer id);
 
     Integer updateById(Integer id, Integer status);
 
-    DeviceDO findById(Integer id);
+    DeviceDO2 findById(Integer id);
 
 
     List<TblDeviceInfo> selectAllUser();

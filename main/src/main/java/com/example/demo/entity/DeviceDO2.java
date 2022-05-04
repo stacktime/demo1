@@ -16,7 +16,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "tbl_device_info")
-public class DeviceDO {
+public class DeviceDO2 {
     /**
      *
      */
@@ -75,8 +75,8 @@ public class DeviceDO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        DeviceDO deviceDO = (DeviceDO) o;
-        return id != null && Objects.equals(id, deviceDO.id);
+        DeviceDO2 deviceDO2 = (DeviceDO2) o;
+        return id != null && Objects.equals(id, deviceDO2.id);
     }
 
     @Override

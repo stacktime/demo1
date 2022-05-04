@@ -32,7 +32,8 @@
         update tbl_device_info set status = #{status} where id = #{id}
     </update>
     <select id="selectAllUser" resultType="com.example.demo.domain.TblDeviceInfo"></select>
-    <select id="findById" resultType="com.example.demo.entity.DeviceDO"></select>
+    <select id="findById" resultType="com.example.demo.entity.DeviceDO2">
+    </select>
 
 
 </mapper>
