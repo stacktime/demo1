@@ -18,6 +18,9 @@ public interface TblDeviceInfoMapper extends BaseMapper<TblDeviceInfo> {
 
     Integer insertUser(DeviceDO2 deviceDO2);
 
+    @Override
+    int insert(TblDeviceInfo entity);
+
     Integer deleteById(Integer id);
 
     Integer updateById(Integer id, Integer status);

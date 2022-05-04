@@ -17,21 +17,40 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,code,name,
-        status,deleted,gmt_create,
-        create_user,gmt_modify,modify_user
+        id,
+        code,
+        name,
+        status,
+        deleted,
+        gmt_create,
+        create_user,
+        gmt_modify,
+        modify_user
     </sql>
     <insert id="insertUser">
         insert into tbl_device_info values
         (null,#{code},#{name},#{status},#{deleted},#{gmtCreate},#{createUser},#{gmtModify},#{modifyUser})
     </insert>
+
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.domain.TblDeviceInfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into tbl_device_info (code, `name`, `status`,
+        deleted, gmt_create, create_user,
+        gmt_modify, modify_user)
+        values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+        #{deleted,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR},
+        #{gmtModify,jdbcType=TIMESTAMP}, #{modifyUser,jdbcType=VARCHAR})
+    </insert>
+
     <update id="deleteById">
         update tbl_device_info set deleted = 1 where id = #{id}
     </update>
     <update id="updateById">
         update tbl_device_info set status = #{status} where id = #{id}
     </update>
-    <select id="selectAllUser" resultType="com.example.demo.domain.TblDeviceInfo"></select>
+    <select id="selectAllUser" resultType="com.example.demo.domain.TblDeviceInfo">
+    </select>
     <select id="findById" resultType="com.example.demo.entity.DeviceDO2">
     </select>
 
