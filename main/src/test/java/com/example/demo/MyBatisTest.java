@@ -26,8 +26,8 @@ public class MyBatisTest {
         SqlSession sqlSession = build.openSession(true);
         TblDeviceInfoMapper mapper = sqlSession.getMapper(TblDeviceInfoMapper.class);
 
-        TblDeviceInfo user = mapper.selectById(4);
-        System.out.println(user);
+        //TblDeviceInfo user = mapper.selectById(4);
+       // System.out.println(user);
     }
 
     @Test

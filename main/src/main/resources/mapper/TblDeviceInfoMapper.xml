@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.TblDeviceInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.demo.domain.TblDeviceInfo">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.DeviceDO2">
         <id property="id" column="id" jdbcType="INTEGER"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -32,7 +32,7 @@
         (null,#{code},#{name},#{status},#{deleted},#{gmtCreate},#{createUser},#{gmtModify},#{modifyUser})
     </insert>
 
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.domain.TblDeviceInfo"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.DeviceDO2"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into tbl_device_info (code, `name`, `status`,
@@ -52,6 +52,7 @@
     <select id="selectAllUser" resultType="com.example.demo.domain.TblDeviceInfo">
     </select>
     <select id="findById" resultType="com.example.demo.entity.DeviceDO2">
+        select * from tbl_device_info where id = #{id}
     </select>
 
 

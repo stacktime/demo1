@@ -13,6 +13,4 @@ public class Constant {
     public static final Integer NO = 0;
 
     public static final Byte NO_BYTE = 0;
-
-    public static final Date Time = new Date();
 }

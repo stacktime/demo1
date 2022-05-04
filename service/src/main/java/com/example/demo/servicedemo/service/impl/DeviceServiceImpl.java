@@ -40,9 +40,9 @@ public class DeviceServiceImpl implements DeviceService {
         deviceDO.setName(resDto.getName());
         deviceDO.setStatus(resDto.getStatus());
         deviceDO.setDeleted(resDto.getDeleted());
-        deviceDO.setGmtCreate(Constant.Time);
+        deviceDO.setGmtCreate(new Date());
         deviceDO.setCreateUser(resDto.getCreateUser());
-        deviceDO.setGmtModify(Constant.Time);
+        deviceDO.setGmtModify(new Date());
         deviceDO.setModifyUser(resDto.getModifyUser());
         deviceDao.saveAndFlush(deviceDO);
     }

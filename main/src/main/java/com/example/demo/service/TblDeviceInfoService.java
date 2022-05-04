@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.demo.domain.TblDeviceInfo;
+import com.example.demo.entity.DeviceDO2;
 
 
 /**
@@ -9,7 +10,7 @@ import com.example.demo.domain.TblDeviceInfo;
  * @description 针对表【tbl_device_info】的数据库操作Service
  * @createDate 2022-05-04 00:20:01
  */
-public interface TblDeviceInfoService extends IService<TblDeviceInfo> {
+public interface TblDeviceInfoService extends IService<DeviceDO2> {
 
     public Integer insertStatus(TblDeviceInfo tblDeviceInfo);
 
