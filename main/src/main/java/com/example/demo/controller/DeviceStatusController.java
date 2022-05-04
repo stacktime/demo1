@@ -21,7 +21,7 @@ public class DeviceStatusController {
 
     @PutMapping("/deleted")
     public Object deleted(@RequestBody TblDeviceInfo tblDeviceInfo) {
-        return tblDeviceInfoService.updateData(tblDeviceInfo);
+        return tblDeviceInfoService.deleted(tblDeviceInfo);
     }
     @PutMapping("/updateData")
     public Object updateData(@RequestBody TblDeviceInfo tblDeviceInfo) {
