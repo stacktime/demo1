@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ShadowMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.domain.Shadow">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="state" column="state" jdbcType="OTHER"/>
+            <result property="metadata" column="metadata" jdbcType="OTHER"/>
+            <result property="timestamp" column="timestamp" jdbcType="TIMESTAMP"/>
+            <result property="version" column="version" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,state,metadata,
+        timestamp,version
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List" />
+        from shadow
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.domain.Shadow" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into shadow (`state`, metadata, `timestamp`,
+        version)
+        values (#{state,jdbcType=VARCHAR}, #{metadata,jdbcType=VARCHAR}, #{timestamp,jdbcType=TIMESTAMP},
+        #{version,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.domain.Shadow">
+        <!--@mbg.generated-->
+        update shadow
+        set `state` = #{state,jdbcType=VARCHAR},
+        metadata = #{metadata,jdbcType=VARCHAR},
+        `timestamp` = #{timestamp,jdbcType=TIMESTAMP},
+        version = #{version,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
